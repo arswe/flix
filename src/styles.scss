@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 400;
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  background-color: #141414;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+.container {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
