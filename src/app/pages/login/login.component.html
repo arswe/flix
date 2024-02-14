@@ -1,10 +1,38 @@
-<app-card>
-  <card-title>
-    <h2>Login Here</h2>
-  </card-title>
-  <card-body>
-    <div>
-      
-    </div>
-  </card-body>
-</app-card>
+<div class="w-2/5">
+  <app-card>
+    <card-title>
+      <h4 class="text-lg font-bold">Login Here</h4>
+    </card-title>
+    <card-body>
+      <form novalidate>
+        <div class="form-group mb-3">
+          <label for="email" class="form-label"
+            >Email Address <span>*</span></label
+          >
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="form-control"
+            placeholder="Email Address"
+            formControlName="email"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="password" class="form-label"
+            >Password <span>*</span></label
+          >
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="form-control"
+            placeholder="Password"
+            formControlName="password"
+          />
+        </div>
+        <button type="submit" class="btn btn-blue max-w-sm">Login</button>
+      </form>
+    </card-body>
+  </app-card>
+</div>
