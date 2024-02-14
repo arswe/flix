@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,8 +8,8 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'movies';
+  title = 'NG blogs';
 }
