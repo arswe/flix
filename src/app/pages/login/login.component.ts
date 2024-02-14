@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
   standalone: true,
   imports: [],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrl: './login.component.scss',
 })
 export class LoginComponent {
   constructor(private toastrService: ToastrService) {}

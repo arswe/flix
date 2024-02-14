@@ -8,6 +8,6 @@ import { HeaderComponent } from '../header/header.component';
   standalone: true,
   imports: [CommonModule, RouterModule, HeaderComponent],
   templateUrl: './master.component.html',
-  styleUrl: './master.component.css',
+  styleUrl: './master.component.scss',
 })
 export class MasterComponent {}
