@@ -6,3 +6,11 @@ export const loginSchema = z.object({
     .email('Invalid Email Address'),
   password: z.string({ required_error: 'password is required' }).min(6),
 });
+
+export const registerSchema = z.object({
+  name: z.string({ required_error: 'Name is required' }).min(6),
+  email: z
+    .string({ required_error: 'Name is required' })
+    .email('Invalid Email Address'),
+  password: z.string({ required_error: 'password is required' }).min(6),
+});
