@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import { UserModel } from '../db/users';
+import { generateToken } from '../middleware/authenticate';
+import { IUser } from '../models/common.model';
 import { loginSchema, registerSchema } from '../validator';
 
 class AuthController {
@@ -12,8 +14,20 @@ class AuthController {
       const user = await UserModel.findOne({ email });
 
       if (user) {
+        const data: IUser = {
+          _id: user._id.toString(),
+          email: user.email,
+          name: user.name,
+          token: '',
+        };
+
         const ispasswordMatch = await bcrypt.compare(password, user.password);
         if (ispasswordMatch) {
+          const token = generateToken(data);
+          user.token = token;
+          await user.save();
+          data.token = token;
+
           return response
             .status(201)
             .json({ message: 'User Login SuccessFull', data: user });
