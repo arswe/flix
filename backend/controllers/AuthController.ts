@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
+import { UserModel } from '../db/users';
 import { registerSchema } from '../validator';
 
 class AuthController {
@@ -14,6 +15,9 @@ class AuthController {
       const saltRounds = 10;
       const salt = await bcrypt.genSalt(saltRounds);
       const hashPassword = await bcrypt.hash(password, salt);
+
+      const user = new UserModel({ name, email, password });
+      await
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
