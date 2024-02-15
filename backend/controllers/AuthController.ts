@@ -16,10 +16,11 @@ class AuthController {
       const salt = await bcrypt.genSalt(saltRounds);
       const hashPassword = await bcrypt.hash(password, salt);
 
-      const user = new UserModel({ name, email, password });
+      const user = new UserModel({ name, email, password: hashPassword });
       await user.save();
-
+      
       return response.status(201).json({ message: 'User Created SuccessFull' });
+
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
