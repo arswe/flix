@@ -19,6 +19,13 @@ export const validateUser = async (
   const authorization = request.headers.authorization;
   if (authorization) {
     const splittedToken = authorization.split(' ');
+
+    try {
+    } catch (error) {
+      return response
+        .status(401)
+        .json({ status: false, message: 'Unauthorized' });
+    }
   }
   return response.status(401).json({ status: false, message: 'Unauthorized' });
 };
