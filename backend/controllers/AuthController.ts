@@ -1,3 +1,4 @@
+import Bcrypt from 'bcryptjs';
 import { Request, Response } from 'express';
 import { registerSchema } from '../validator';
 
@@ -9,6 +10,9 @@ class AuthController {
     try {
       const { name, email, password } = request.body;
       registerSchema.parse({ name, email, password });
+
+      const saltRounds = 10;
+      const salt = await Bcrypt.genSalt();
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
