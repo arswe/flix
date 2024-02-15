@@ -30,7 +30,7 @@ class AuthController {
 
           return response
             .status(201)
-            .json({ message: 'User Login SuccessFull', data: user });
+            .json({ message: 'User Login SuccessFull', data });
         }
       }
       return response
