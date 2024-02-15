@@ -7,7 +7,22 @@ class AuthController {
   public async login(request: Request, response: Response) {
     try {
       const { email, password } = request.body;
-      loginSchema.parse({ name, email, password });
+      loginSchema.parse({ email, password });
+      const user = await UserModel.findOne({
+        email,
+      });
+
+      if (user) {
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        if (isPasswordMatch) {
+          return response
+            .status(201)
+            .json({ message: 'User Login SuccessFull', data: user });
+        }
+      }
+      return response
+        .status(400)
+        .json({ status: false, message: 'Invalid Credentials' });
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
