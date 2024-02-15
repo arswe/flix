@@ -1,5 +1,5 @@
 import { sign } from 'jsonwebtoken';
-import { IUser } from '../models/common.model';
+import { IUser } from '../dtos/common.model';
 
 const SECRETE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9';
 

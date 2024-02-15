@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
-import { UserModel } from '../db/users';
+import { UserModel } from '../models/users';
+import { IUser } from '../dtos/common.model';
 import { generateToken } from '../middleware/authenticate';
-import { IUser } from '../models/common.model';
 import { loginSchema, registerSchema } from '../validator';
 
 class AuthController {
