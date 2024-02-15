@@ -1,11 +1,16 @@
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import { UserModel } from '../db/users';
-import { registerSchema } from '../validator';
+import { loginSchema, registerSchema } from '../validator';
 
 class AuthController {
   public async login(request: Request, response: Response) {
-    return response.json({ message: 'login' });
+    try {
+      const { email, password } = request.body;
+      loginSchema.parse({ name, email, password });
+    } catch (error) {
+      return response.status(400).json({ status: false, error });
+    }
   }
   public async register(request: Request, response: Response) {
     try {
@@ -18,9 +23,8 @@ class AuthController {
 
       const user = new UserModel({ name, email, password: hashPassword });
       await user.save();
-      
-      return response.status(201).json({ message: 'User Created SuccessFull' });
 
+      return response.status(201).json({ message: 'User Created SuccessFull' });
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
