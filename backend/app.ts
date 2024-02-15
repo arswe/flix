@@ -2,6 +2,7 @@ import colors from 'colors';
 import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
+import router from './routes/route';
 
 dotenv.config();
 const port = process.env.PORT || 8000;
@@ -24,6 +25,8 @@ mongoose
 app.get('/', (req, res) => {
   res.send('hello');
 });
+
+app.use('/', router);
 
 app.listen(port, () => {
   console.log(
