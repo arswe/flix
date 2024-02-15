@@ -8,13 +8,12 @@ class AuthController {
     try {
       const { email, password } = request.body;
       loginSchema.parse({ email, password });
-      const user = await UserModel.findOne({
-        email,
-      });
+
+      const user = await UserModel.findOne({ email });
 
       if (user) {
-        const isPasswordMatch = await bcrypt.compare(password, user.password);
-        if (isPasswordMatch) {
+        const ispasswordMatch = await bcrypt.compare(password, user.password);
+        if (ispasswordMatch) {
           return response
             .status(201)
             .json({ message: 'User Login SuccessFull', data: user });
@@ -34,9 +33,9 @@ class AuthController {
 
       const saltRounds = 10;
       const salt = await bcrypt.genSalt(saltRounds);
-      const hashPassword = await bcrypt.hash(password, salt);
+      const hashpassword = await bcrypt.hash(password, salt);
 
-      const user = new UserModel({ name, email, password: hashPassword });
+      const user = new UserModel({ name, email, password: hashpassword });
       await user.save();
 
       return response.status(201).json({ message: 'User Created SuccessFull' });
