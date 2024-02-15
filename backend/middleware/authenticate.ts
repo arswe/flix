@@ -1,8 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
-import { sign } from 'jsonwebtoken';
+import { sign, verify } from 'jsonwebtoken';
+import { merge } from 'lodash';
 import { IUser } from '../dtos/common.model';
+import { UserModel } from '../models/users';
 
-const SECRETE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9';
+const SECRETE_KEY = 'adg54asdf56321ag564asd5g';
 
 export const generateToken = (data: IUser) => {
   const token = sign(data, SECRETE_KEY, {
@@ -17,24 +19,35 @@ export const validateUser = async (
   next: NextFunction
 ) => {
   const authorization = request.headers.authorization;
+
   if (authorization) {
     const splittedToken = authorization.split(' ');
-
     try {
-      try {
-        const token = splittedToken[1];
-        const user: IUser = (await verify(token, SECRETE_KEY)) as IUser;
-        const isValidToken = await isTokenValid(user.email, token);
-  
-        if (user && isValidToken) {
-          merge(request, { user });
-          return next();
-        }
+      const token = splittedToken[1];
+
+      const user: IUser = (await verify(token, SECRETE_KEY)) as IUser;
+
+      const isValidToken = await isTokenValid(user.email, token);
+
+      if (user && isValidToken) {
+        merge(request, { user });
+        return next();
+      }
     } catch (error) {
       return response
         .status(401)
         .json({ status: false, message: 'Unauthorized' });
     }
   }
+
   return response.status(401).json({ status: false, message: 'Unauthorized' });
+};
+
+const isTokenValid = async (email: string, token: string) => {
+  const user = await UserModel.findOne({
+    email,
+    token,
+  });
+
+  return user ? true : false;
 };
