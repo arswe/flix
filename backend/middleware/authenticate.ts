@@ -17,4 +17,8 @@ export const validateUser = async (
   next: NextFunction
 ) => {
   const authorization = request.headers.authorization;
+  if (authorization) {
+    const splittedToken = authorization.split(' ');
+  }
+  return response.status(401).json({ status: false, message: 'Unauthorized' });
 };
