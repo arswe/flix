@@ -12,7 +12,9 @@ class AuthController {
 
       loginSchema.parse({ email, password });
 
-      const user = await UserModel.findOne({ email });
+      const user = await UserModel.findOne({
+        email,
+      });
 
       if (user) {
         const data: IUser = {
@@ -46,13 +48,19 @@ class AuthController {
   public async register(request: Request, response: Response) {
     try {
       const { name, email, password } = request.body;
+
       registerSchema.parse({ name, email, password });
 
       const saltRounds = 10;
       const salt = await bcrypt.genSalt(saltRounds);
       const hashPassword = await bcrypt.hash(password, salt);
 
-      const user = new UserModel({ name, email, password: hashPassword });
+      const user = new UserModel({
+        name,
+        email,
+        password: hashPassword,
+      });
+
       await user.save();
 
       return response
@@ -66,7 +74,9 @@ class AuthController {
   public async me(request: IRequest, response: Response) {
     try {
       const email = request.user?.email;
-      const user = await UserModel.findOne({ email });
+      const user = await UserModel.findOne({
+        email,
+      });
       if (user) {
         const data: IUser = {
           _id: user._id.toString(),
@@ -80,6 +90,7 @@ class AuthController {
       return response.status(400).json({ status: false, error });
     }
   }
+
   public async logout(request: IRequest, response: Response) {
     try {
       const email = request.user?.email;
