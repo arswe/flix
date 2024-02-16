@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
-import { IUser } from '../dtos/common.model';
+import { IRequest, IUser } from '../dtos/common.model';
 import { generateToken } from '../middleware/authenticate';
 import { UserModel } from '../models/users';
 import { loginSchema, registerSchema } from '../validator';
@@ -59,8 +59,10 @@ class AuthController {
     }
   }
 
-  public async me(request: Request, response: Response) {
+  public async me(request: IRequest, response: Response) {
     try {
+      const email = request.user?.email;
+      
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
