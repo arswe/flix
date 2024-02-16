@@ -63,7 +63,7 @@ class AuthController {
     try {
       const email = request.user?.email;
       const user = await UserModel.findOne({ email });
-      return response.status(201).json({ message: 'User Created SuccessFull' });
+      return response.status(201).json({ data: user });
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
