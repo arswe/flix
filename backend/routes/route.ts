@@ -12,6 +12,7 @@ router.get('/auth/logout', validateUser, AuthController.logout);
 
 router.get('/message', validateUser, MessageController.getAllMessage);
 router.get('/message/:id', validateUser, MessageController.getMessage);
+router.get('/message/:id/read', validateUser, MessageController.readMessage);
 router.post('/message', validateUser, MessageController.createMessage);
 
 export default router;
