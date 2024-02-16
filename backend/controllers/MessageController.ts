@@ -7,7 +7,9 @@ class MessageController {
       const message = await MessageModel.find();
 
       return response.status(201).json({ data: message });
-    } catch (error) {}
+    } catch (error) {
+      return response.status(400).json({ status: false, error });
+    }
   }
 }
 
