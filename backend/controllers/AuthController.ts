@@ -40,6 +40,7 @@ class AuthController {
       return response.status(400).json({ status: false, error });
     }
   }
+  
   public async register(request: Request, response: Response) {
     try {
       const { name, email, password } = request.body;
@@ -57,7 +58,14 @@ class AuthController {
       return response.status(400).json({ status: false, error });
     }
   }
-  public async me(request: Request, response: Response) {}
+
+  public async me(request: Request, response: Response) {
+    try {
+    } catch (error) {
+      return response.status(400).json({ status: false, error });
+    }
+  }
+
   public async logout(request: Request, response: Response) {}
 }
 
