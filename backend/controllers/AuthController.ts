@@ -63,12 +63,21 @@ class AuthController {
 
   public async me(request: IRequest, response: Response) {
     try {
-      return response.status(201).json({ data: request.user });
+      const email = request.user?.email;
+      const user = await UserModel.findOne({ email });
+      if (user) {
+        const data: IUser = {
+          _id: user._id.toString(),
+          email: user.email,
+          name: user.name,
+          token: user.token || '',
+        };
+        return response.status(201).json({ data });
+      }
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
   }
-
   public async logout(request: Request, response: Response) {}
 }
 
