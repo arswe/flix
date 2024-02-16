@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './to-input.component.html',
-  styleUrl: './to-input.component.scss'
+  styleUrl: './to-input.component.scss',
 })
-export class ToInputComponent {
-
-}
+export class ToInputComponent {}
