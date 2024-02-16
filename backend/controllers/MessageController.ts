@@ -68,7 +68,7 @@ class MessageController {
         await message.save();
         return response
           .status(200)
-          .json({ message: 'Message Deleted Done', data: message });
+          .json({ message: 'Message Deleted', data: message });
       }
     } catch (error) {
       return response.status(400).json({ status: false, error });
