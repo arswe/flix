@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
-import { UserModel } from '../models/users';
 import { IUser } from '../dtos/common.model';
 import { generateToken } from '../middleware/authenticate';
+import { UserModel } from '../models/users';
 import { loginSchema, registerSchema } from '../validator';
 
 class AuthController {
@@ -57,6 +57,7 @@ class AuthController {
       return response.status(400).json({ status: false, error });
     }
   }
+  public async me(request: Request, response: Response) {}
   public async logout(request: Request, response: Response) {}
 }
 
