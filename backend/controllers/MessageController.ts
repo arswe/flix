@@ -44,9 +44,17 @@ class MessageController {
       return response.status(400).json({ status: false, error });
     }
   }
-
   public async readMessage(request: Request, response: Response) {
     try {
+      const { id } = request.params;
+      const message = await MessageModel.findById(id);
+      if (message) {
+        message.status = 2;
+        await message.save();
+        return response
+          .status(200)
+          .json({ message: 'Message Updated', data: message });
+      }
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
