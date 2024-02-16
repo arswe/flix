@@ -9,6 +9,7 @@ class AuthController {
   public async login(request: Request, response: Response) {
     try {
       const { email, password } = request.body;
+
       loginSchema.parse({ email, password });
 
       const user = await UserModel.findOne({ email });
@@ -21,8 +22,8 @@ class AuthController {
           token: '',
         };
 
-        const ispasswordMatch = await bcrypt.compare(password, user.password);
-        if (ispasswordMatch) {
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        if (isPasswordMatch) {
           const token = generateToken(data);
           user.token = token;
           await user.save();
@@ -30,12 +31,13 @@ class AuthController {
 
           return response
             .status(201)
-            .json({ message: 'User Login SuccessFull', data });
+            .json({ message: 'User logged in successfully', data });
         }
       }
+
       return response
         .status(400)
-        .json({ status: false, message: 'Invalid Credentials' });
+        .json({ status: false, message: 'Invalid credentials' });
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
@@ -78,7 +80,23 @@ class AuthController {
       return response.status(400).json({ status: false, error });
     }
   }
-  public async logout(request: Request, response: Response) {}
+  public async logout(request: IRequest, response: Response) {
+    try {
+      const email = request.user?.email;
+      const user = await UserModel.findOne({ email });
+
+      if (user) {
+        user.token = null;
+        await user.save();
+      }
+
+      return response
+        .status(200)
+        .json({ message: 'User logged out successfully' });
+    } catch (error) {
+      return response.status(400).json({ status: false, error });
+    }
+  }
 }
 
 export default new AuthController();
