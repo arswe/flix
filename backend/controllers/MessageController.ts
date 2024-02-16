@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { MessageModel } from '../models/message';
+import { messageSchema } from '../validator';
 
 class MessageController {
   public async getAllMessage(request: Request, response: Response) {
@@ -25,10 +26,21 @@ class MessageController {
   public async createMessage(request: Request, response: Response) {
     try {
       const { sender, to, subject, body } = request.body;
+      messageSchema.parse({ sender, to, subject, body });
 
-      
+      const message = new MessageModel({
+        sender,
+        to,
+        subject,
+        body,
+        status: 1,
+      });
+      await message.save();
 
-      return response.status(201).json({ data: message });
+      return response
+        .status(200)
+        .json({ message: 'Message Sent', data: message });
+        
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
