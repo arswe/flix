@@ -40,7 +40,13 @@ class MessageController {
       return response
         .status(200)
         .json({ message: 'Message Sent', data: message });
-        
+    } catch (error) {
+      return response.status(400).json({ status: false, error });
+    }
+  }
+
+  public async readMessage(request: Request, response: Response) {
+    try {
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }

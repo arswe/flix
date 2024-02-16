@@ -11,6 +11,7 @@ router.get('/auth/me', validateUser, AuthController.me);
 router.get('/auth/logout', validateUser, AuthController.logout);
 
 router.get('/message', validateUser, MessageController.getAllMessage);
+router.get('/message/:id', validateUser, MessageController.getMessage);
 router.post('/message', validateUser, MessageController.createMessage);
 
 export default router;
