@@ -4,3 +4,7 @@ export interface IUser {
   email: string;
   token: string;
 }
+
+export interface IRequest extends Request {
+  user?: IUser;
+}

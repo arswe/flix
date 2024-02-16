@@ -40,7 +40,7 @@ class AuthController {
       return response.status(400).json({ status: false, error });
     }
   }
-  
+
   public async register(request: Request, response: Response) {
     try {
       const { name, email, password } = request.body;
