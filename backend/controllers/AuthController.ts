@@ -48,12 +48,14 @@ class AuthController {
 
       const saltRounds = 10;
       const salt = await bcrypt.genSalt(saltRounds);
-      const hashpassword = await bcrypt.hash(password, salt);
+      const hashPassword = await bcrypt.hash(password, salt);
 
-      const user = new UserModel({ name, email, password: hashpassword });
+      const user = new UserModel({ name, email, password: hashPassword });
       await user.save();
 
-      return response.status(201).json({ message: 'User Created SuccessFull' });
+      return response
+        .status(201)
+        .json({ message: 'User created successfully' });
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
@@ -61,9 +63,7 @@ class AuthController {
 
   public async me(request: IRequest, response: Response) {
     try {
-      const email = request.user?.email;
-      const user = await UserModel.findOne({ email });
-      return response.status(201).json({ data: user });
+      return response.status(201).json({ data: request.user });
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
