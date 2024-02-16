@@ -5,7 +5,7 @@ export interface IUser {
   token: string;
 }
 
-export interface IEmail {
+export interface ILogin {
   email: string;
   password: string;
 }
