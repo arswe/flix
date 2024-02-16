@@ -21,6 +21,17 @@ class MessageController {
       return response.status(400).json({ status: false, error });
     }
   }
+
+  public async createMessage(request: Request, response: Response) {
+    try {
+      const { id } = request.params;
+
+      const message = await MessageModel.findById(id);
+      return response.status(201).json({ data: message });
+    } catch (error) {
+      return response.status(400).json({ status: false, error });
+    }
+  }
 }
 
 export default new MessageController();
