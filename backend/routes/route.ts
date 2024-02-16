@@ -10,6 +10,7 @@ router.post('/auth/register', AuthController.register);
 router.get('/auth/me', validateUser, AuthController.me);
 router.get('/auth/logout', validateUser, AuthController.logout);
 
+router.get('/message', validateUser, MessageController.getAllMessage);
 router.post('/message', validateUser, MessageController.createMessage);
 
 export default router;
