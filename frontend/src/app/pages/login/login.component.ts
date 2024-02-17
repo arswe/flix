@@ -11,7 +11,7 @@ import { CardComponent } from '../../components/card/card.component';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CardComponent, ReactiveFormsModule, FormControl, FormGroup],
+  imports: [CardComponent, ReactiveFormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -24,7 +24,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
     });
+  }
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      
+    } else {
+      this.loginForm.markAllAsTouched();
+    }
   }
 }
