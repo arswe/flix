@@ -18,7 +18,7 @@ mongoose
     dbName: 'mailbox',
   })
   .then(() => {
-    console.log('Database Connected..');
+    console.log('Database Connected...');
   })
   .catch((err) => {
     console.log('Error', err.message);
@@ -32,6 +32,6 @@ app.use('/', router);
 
 app.listen(port, () => {
   console.log(
-    colors.rainbow(`Server is running on port http://localhost:${port}`)
+    colors.rainbow(`Backend is running on port http://localhost:${port}`)
   );
 });
