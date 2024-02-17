@@ -9,10 +9,8 @@ export class TokenService {
   isAuthentication: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
-
   constructor() {
     const token = this.getToken();
-
     if (token) {
       this.updateToken(true);
     }
