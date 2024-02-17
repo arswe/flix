@@ -4,7 +4,7 @@
       <h4 class="text-lg font-bold">Login Here</h4>
     </card-title>
     <card-body>
-      <form novalidate>
+      <form novalidate (submit)="onSubmit()" [formGroup]="loginForm">
         <div class="form-group mb-3">
           <label for="email" class="form-label"
             >Email Address <span>*</span></label
