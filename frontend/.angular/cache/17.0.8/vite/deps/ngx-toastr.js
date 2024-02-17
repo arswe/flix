@@ -7,7 +7,8 @@ import {
 } from "./chunk-NL4KQJL2.js";
 import {
   DomSanitizer
-} from "./chunk-EPETDNE3.js";
+} from "./chunk-OV77HH5E.js";
+import "./chunk-NKY2QN66.js";
 import {
   DOCUMENT,
   NgIf

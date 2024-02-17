@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CardComponent } from '../../components/card/card.component';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ import { CardComponent } from '../../components/card/card.component';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -31,6 +32,11 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
+      this.authService.login(this.loginForm.value).subscribe({
+        next(value) {
+          console.log(value);
+        },
+      });
     } else {
       this.loginForm.markAllAsTouched();
     }
