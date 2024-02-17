@@ -11,7 +11,6 @@ export class TokenService {
   );
   constructor() {}
   setToken(token: string) {
-    localStorage.setItem;
-    constants;
+    localStorage.setItem(constants.CURRENT_TOKEN, token);
   }
 }
