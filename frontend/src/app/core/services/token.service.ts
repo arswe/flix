@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { constants } from '../constants/constants';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TokenService {
-
-  constructor() { }
+  isAuthentication: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
+  constructor() {}
+  setToken(token: string) {
+    localStorage.setItem;
+    constants;
+  }
 }
