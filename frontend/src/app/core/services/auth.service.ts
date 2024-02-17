@@ -19,6 +19,7 @@ export class AuthService {
           if (response && response.data.token) {
             this.tokenService.setToken(response.data.token);
           }
+          return response;
         })
       );
   }
