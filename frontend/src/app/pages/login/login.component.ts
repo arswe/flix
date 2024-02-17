@@ -1,6 +1,5 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 import { CardComponent } from '../../components/card/card.component';
 
 @Component({
@@ -11,6 +10,6 @@ import { CardComponent } from '../../components/card/card.component';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {
- 
+export class LoginComponent implements OnInit {
+  
 }
