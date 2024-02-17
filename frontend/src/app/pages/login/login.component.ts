@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      
+      console.log(this.loginForm.value);
     } else {
       this.loginForm.markAllAsTouched();
     }
