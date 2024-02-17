@@ -35,7 +35,12 @@
             placeholder="Password"
             formControlName="password"
           />
+
+          @if (loginForm.get('password')?.hasError('required') &&
+          loginForm.get('password')?.touched ) {
+
           <span class="form-error">Password is required.</span>
+          }
         </div>
         <button type="submit" class="btn btn-blue max-w-sm">Login</button>
       </form>
