@@ -1,5 +1,10 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { CardComponent } from '../../components/card/card.component';
 
 @Component({
@@ -11,5 +16,13 @@ import { CardComponent } from '../../components/card/card.component';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
-  
+  loginForm!: FormGroup;
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      emaail: new FormControl(''),
+    });
+  }
 }
