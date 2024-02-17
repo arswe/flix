@@ -9,10 +9,20 @@ export class TokenService {
   isAuthentication: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
-  constructor() {}
+
+  constructor() {
+    const token = this.getToken();
+    if (token) {
+      this.updateToken(true);
+    }
+  }
 
   updateToken(status: boolean) {
     this.isAuthentication.next(status);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem(constants.CURRENT_TOKEN) || null;
   }
 
   setToken(token: string) {
