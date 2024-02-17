@@ -17,7 +17,11 @@
             placeholder="Email Address"
             formControlName="email"
           />
+          @if (loginForm.get('email')?.hasError('required') &&
+          loginForm.get('email')?.touched ) {
+
           <span class="form-error">Email is required.</span>
+          }
         </div>
         <div class="form-group mb-3">
           <label for="password" class="form-label"
