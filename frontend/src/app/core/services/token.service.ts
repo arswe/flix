@@ -12,6 +12,7 @@ export class TokenService {
 
   constructor() {
     const token = this.getToken();
+
     if (token) {
       this.updateToken(true);
     }
