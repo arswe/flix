@@ -6,3 +6,11 @@ export class GetAllUser {
 }
 
 
+export class GetLoggedInUser {
+  static readonly type = '[User] Get Logged In User';
+}
+
+export interface UserStateModel {
+  users: IUser[] | undefined;
+  user: IUser | null;
+}
