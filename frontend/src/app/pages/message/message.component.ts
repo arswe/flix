@@ -22,6 +22,12 @@ export class MessageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllMessages();
+    
+    this.message$.subscribe({
+      next(value) {
+        console.log(value);
+      },
+    });
   }
 
   getAllMessages() {
