@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit } from '@angular/core';
 import { CardComponent } from '../../components/card/card.component';
 import { MessageItemComponent } from '../../components/message-item/message-item.component';
 import { SidebarComponent } from '../../layouts/sidebar/sidebar.component';
-import { MessageService } from './../../core/services/message.service';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-message',

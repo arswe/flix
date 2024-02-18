@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CardComponent } from '../../components/card/card.component';
-import { AuthService } from '../../core/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
