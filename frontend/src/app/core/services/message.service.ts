@@ -12,6 +12,8 @@ export class MessageService {
   constructor(private http: HttpClient) {}
 
   getAllMessage(): Observable<IApiResponse<IMessage[]>> {
-    return this.http.get<IApiResponse<IMessage[]>>(`${apiEndpoint}`);
+    return this.http.get<IApiResponse<IMessage[]>>(
+      `${apiEndpoint.MessageEndpoint}`
+    );
   }
 }
