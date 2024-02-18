@@ -8,7 +8,11 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
 
   if (tokenService) {
-    req = req.clone({});
+    req = req.clone({
+      setHeaders: {
+        Authorization: `Bear ${tokenService.getToken()}`,
+      },
+    });
   }
 
   return next(req);
