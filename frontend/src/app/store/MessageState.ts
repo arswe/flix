@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Action, State } from '@ngxs/store';
+import { Action, State, StateContext } from '@ngxs/store';
+import { tap } from 'rxjs';
 import { IMessage } from '../models/common.model';
 import { MessageService } from '../services/message.service';
 
@@ -19,7 +20,18 @@ export interface MessageStateModel {
 })
 @Injectable()
 export class MessageState {
-  constructor(private messageService: MessageService) {
-    @Action()
+  constructor(private messageService: MessageService) {}
+
+  @Action(GetAllMessage)
+  getAllMessage(ctx: StateContext<MessageStateModel>) {
+    return this.messageService.getAllMessages().pipe(
+      tap((response) => {
+        const state = ctx.getState();
+        ctx.setState({
+          ...state,
+          messages: response.data,
+        });
+      })
+    );
   }
 }
