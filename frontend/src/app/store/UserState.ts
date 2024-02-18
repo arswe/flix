@@ -1,6 +1,6 @@
+import { Injectable } from '@angular/core';
 import { State } from '@ngxs/store';
 import { IUser } from '../models/auth.model';
-import { Injectable } from '@angular/core';
 
 export class GetAllUser {
   static readonly type = '[User] Get All';
@@ -23,3 +23,6 @@ export interface UserStateModel {
   },
 })
 @Injectable()
+export class UserState {
+  constructor(private userService: UserService) {}
+}
