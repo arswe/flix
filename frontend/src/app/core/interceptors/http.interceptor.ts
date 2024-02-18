@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, throwError } from 'rxjs';
+import { catchError, retry, throwError } from 'rxjs';
 import { TokenService } from './../services/token.service';
 
 export const httpInterceptor: HttpInterceptorFn = (req, next) => {
@@ -17,6 +17,7 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
   }
 
   return next(req).pipe(
+    retry(2),
     catchError((e: HttpErrorResponse) => {
       if (e.status === 401) {
         tokenService.removeToken();
