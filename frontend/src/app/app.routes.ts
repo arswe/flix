@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './core/guards/auth.guard';
 import { guestGuard } from './core/guards/guest.guard';
 import { MasterComponent } from './layouts/master/master.component';
 import { ComposeComponent } from './pages/compose/compose.component';
@@ -13,7 +14,11 @@ export const routes: Routes = [
     children: [
       { path: '', component: LoginComponent, canActivate: [guestGuard] },
       { path: 'register', component: RegisterComponent },
-      { path: 'message', component: MessageComponent },
+      {
+        path: 'message',
+        component: MessageComponent,
+        canActivate: [authGuard],
+      },
       { path: 'compose', component: ComposeComponent },
     ],
   },
