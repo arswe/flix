@@ -17,7 +17,7 @@ import { MessageState } from '../../store/MessageState';
   styleUrl: './message.component.scss',
 })
 export class MessageComponent implements OnInit {
-  @Select(MessageState.selectMessages) message$ = Observable<IMessage[]>;
+  @Select(MessageState.selectMessages) message$!: Observable<IMessage[]>;
   constructor(private messageService: MessageService) {}
 
   ngOnInit(): void {
