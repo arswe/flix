@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './core/guards/auth.guard';
-import { guestGuard } from './core/guards/guest.guard';
+import { authGuard } from './guards/auth.guard';
+import { guestGuard } from './guards/guest.guard';
 import { MasterComponent } from './layouts/master/master.component';
 import { ComposeComponent } from './pages/compose/compose.component';
 import { LoginComponent } from './pages/login/login.component';

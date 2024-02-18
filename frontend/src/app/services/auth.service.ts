@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { apiEndpoint } from '../constants/constants';
-import { ILogin, ILoginResponse } from '../models/auth.model';
+import { apiEndpoint } from '../../constants/constants';
+import { ILogin, ILoginResponse } from '../../models/auth.model';
 import { TokenService } from './token.service';
 
 @Injectable({

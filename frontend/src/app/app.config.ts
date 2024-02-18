@@ -9,7 +9,7 @@ import { provideRouter } from '@angular/router';
 import { NgxsModule } from '@ngxs/store';
 import { provideToastr } from 'ngx-toastr';
 import { routes } from './app.routes';
-import { httpInterceptor } from './core/interceptors/http.interceptor';
+import { httpInterceptor } from './interceptors/http.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
