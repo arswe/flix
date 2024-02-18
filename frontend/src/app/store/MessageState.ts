@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Action, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs';
 import { IMessage } from '../models/common.model';
 import { MessageService } from '../services/message.service';
@@ -33,5 +33,10 @@ export class MessageState {
         });
       })
     );
+  }
+
+  @Selector([MessageState])
+  static selectMessages(state: MessageStateModel): IMessage[] | undefined {
+    return state.messages;
   }
 }
