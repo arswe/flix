@@ -11,7 +11,7 @@ import { IApiResponse } from './../models/common.model';
 export class MessageService {
   constructor(private http: HttpClient) {}
 
-  getAllMessage(): Observable<IApiResponse<IMessage[]>> {
+  getAllMessages(): Observable<IApiResponse<IMessage[]>> {
     return this.http.get<IApiResponse<IMessage[]>>(
       `${apiEndpoint.MessageEndpoint}`
     );
