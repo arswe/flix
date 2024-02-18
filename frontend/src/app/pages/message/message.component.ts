@@ -26,9 +26,10 @@ export class MessageComponent implements OnInit {
 
     this.message$.subscribe({
       next: (value) => {
-        if (value) {
+        if (!value.length) {
           this.store.dispatch(new GetAllMessage());
         }
+        console.log(value);
       },
     });
   }
