@@ -1,3 +1,4 @@
+import { State } from '@ngxs/store';
 import { IMessage } from '../models/common.model';
 
 export class GetAllMessage {
@@ -7,3 +8,11 @@ export class GetAllMessage {
 export interface MessageStateModel {
   messages: IMessage[] | undefined;
 }
+
+
+@State<MessageStateModel>({
+  name: 'Message',
+  defaults: {
+    messages: [],
+  },
+})
