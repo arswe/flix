@@ -14,7 +14,6 @@ import { TokenService } from './../../services/token.service';
 })
 export class HeaderComponent {
   isAuthenticate$!: Observable<boolean>;
-
   constructor(
     private authService: AuthService,
     private tokenService: TokenService
