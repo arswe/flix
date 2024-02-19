@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { State, StateContext } from '@ngxs/store';
+import { Action, State, StateContext } from '@ngxs/store';
+import { tap } from 'rxjs';
 import { IUser } from '../models/auth.model';
 import { UserService } from '../services/user.service';
 
@@ -27,5 +28,16 @@ export interface UserStateModel {
 export class UserState {
   constructor(private userService: UserService) {}
 
-  getLoggedInUser(ctx: StateContext<UserStateModel>) {}
+  @Action(GetAllUser)
+  getAllUser(ctx: StateContext<UserStateModel>) {
+    return this.userService.getAllUsers().pipe(
+      tap((response) => {
+        const state = ctx.getState();
+        ctx.setState({
+          ...state,
+          users: response.data,
+        });
+      })
+    );
+  }
 }
