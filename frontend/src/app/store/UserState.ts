@@ -43,10 +43,7 @@ export class UserState {
     return this.userService.getAllUsers().pipe(
       tap((response) => {
         const state = ctx.getState();
-        ctx.setState({
-          ...state,
-          users: response.data,
-        });
+        ctx.setState({ ...state, users: response.data });
       })
     );
   }
