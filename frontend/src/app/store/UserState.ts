@@ -28,6 +28,19 @@ export interface UserStateModel {
 export class UserState {
   constructor(private userService: UserService) {}
 
+  @Action(GetLoggedInUser)
+  getLoggedInUser(ctx: StateContext<UserStateModel>) {
+    return this.userService.loggedInUser().pipe(
+      tap((response) => {
+        const state = ctx.getState();
+        ctx.setState({
+          ...state,
+          user: response.data,
+        });
+      })
+    );
+  }
+
   @Action(GetAllUser)
   getAllUser(ctx: StateContext<UserStateModel>) {
     return this.userService.getAllUsers().pipe(
