@@ -45,4 +45,9 @@ export class UserState {
   static selectUsers(state: UserStateModel): IUser[] | undefined {
     return state.users;
   }
+
+  @Selector([UserState])
+  static getLoggedUser(state: UserStateModel): IUser | null {
+    return state.user;
+  }
 }
