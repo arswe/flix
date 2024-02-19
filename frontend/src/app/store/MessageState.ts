@@ -14,9 +14,7 @@ export interface MessageStateModel {
 
 @State<MessageStateModel>({
   name: 'Message',
-  defaults: {
-    messages: [],
-  },
+  defaults: { messages: [] },
 })
 @Injectable()
 export class MessageState {
@@ -27,10 +25,7 @@ export class MessageState {
     return this.messageService.getAllMessages().pipe(
       tap((response) => {
         const state = ctx.getState();
-        ctx.setState({
-          ...state,
-          messages: response.data,
-        });
+        ctx.setState({ ...state, messages: response.data });
       })
     );
   }
