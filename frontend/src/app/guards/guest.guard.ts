@@ -9,10 +9,9 @@ export const guestGuard: CanActivateFn = (route, state) => {
   tokenService.isAuthentication.subscribe({
     next(value) {
       if (value) {
-        router.navigate(['message']);
+        router.navigate(['messages']);
       }
     },
   });
-
   return true;
 };
