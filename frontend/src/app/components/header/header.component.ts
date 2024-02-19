@@ -12,11 +12,14 @@ import { TokenService } from './../../services/token.service';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  isAuthenticate$: Observable<boolean> = 
+  isAuthenticate$!: Observable<boolean>;
+
   constructor(
     private authService: AuthService,
     private tokenService: TokenService
-  ) {}
+  ) {
+    this.isAuthenticate$ = this.tokenService.isAuthentication;
+  }
 
   logout() {
     this.authService.logout().subscribe({
