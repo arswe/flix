@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
+import { TokenService } from './../../services/token.service';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +12,11 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  isAuthenticate$: Observable;
-  constructor(private authService: AuthService) {}
+  isAuthenticate$: Observable<boolean> = 
+  constructor(
+    private authService: AuthService,
+    private tokenService: TokenService
+  ) {}
 
   logout() {
     this.authService.logout().subscribe({
