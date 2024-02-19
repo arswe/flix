@@ -11,6 +11,7 @@ import { provideToastr } from 'ngx-toastr';
 import { routes } from './app.routes';
 import { httpInterceptor } from './interceptors/http.interceptor';
 import { MessageState } from './store/MessageState';
+import { UserState } from './store/UserState';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,7 +22,10 @@ export const appConfig: ApplicationConfig = {
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    importProvidersFrom(NgxsModule.forRoot([MessageState]), HttpClientModule),
+    importProvidersFrom(
+      NgxsModule.forRoot([MessageState, UserState]),
+      HttpClientModule
+    ),
     provideHttpClient(withInterceptors([httpInterceptor])),
   ],
 };
