@@ -6,11 +6,11 @@ import mongoose from 'mongoose';
 import router from './routes/route';
 
 dotenv.config();
-const app = express();
-
-app.use(cors());
-app.use(express.json());
 const port = process.env.PORT || 8000;
+
+const app = express();
+app.use(express.json());
+app.use(cors());
 
 const MONGO_URL = 'mongodb://localhost:27017';
 mongoose
