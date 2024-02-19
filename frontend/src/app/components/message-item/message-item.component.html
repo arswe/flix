@@ -15,7 +15,9 @@
           {{ data.subject }}
         </div>
       </div>
-      <div class="inline-flex items-center text-xs text-gray-500"></div>
+      <div class="inline-flex items-center text-xs text-gray-500">
+        {{ data.createdAt | dateAgo }}
+      </div>
     </div>
     <div class="font-normal hidden group-hover:inline-flex mx-3">
       <i class="ri-delete-bin-6-fill ri-lg text-red-600"></i>
