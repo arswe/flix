@@ -5,19 +5,20 @@ import { messageSchema } from '../validator';
 class MessageController {
   public async getAllMessage(request: Request, response: Response) {
     try {
-      const message = await MessageModel.find();
-
-      return response.status(201).json({ data: message });
+      const messages = await MessageModel.find()
+        .populate('to', '_id name email')
+        .populate('sender', '_id name email');
+      return response.status(200).json({ data: messages });
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
   }
+
   public async getMessage(request: Request, response: Response) {
     try {
       const { id } = request.params;
-
       const message = await MessageModel.findById(id);
-      return response.status(201).json({ data: message });
+      return response.status(200).json({ data: message });
     } catch (error) {
       return response.status(400).json({ status: false, error });
     }
@@ -26,6 +27,7 @@ class MessageController {
   public async createMessage(request: Request, response: Response) {
     try {
       const { sender, to, subject, body } = request.body;
+
       messageSchema.parse({ sender, to, subject, body });
 
       const message = new MessageModel({
@@ -44,6 +46,7 @@ class MessageController {
       return response.status(400).json({ status: false, error });
     }
   }
+
   public async readMessage(request: Request, response: Response) {
     try {
       const { id } = request.params;
@@ -59,6 +62,7 @@ class MessageController {
       return response.status(400).json({ status: false, error });
     }
   }
+
   public async deleteMessage(request: Request, response: Response) {
     try {
       const { id } = request.params;
