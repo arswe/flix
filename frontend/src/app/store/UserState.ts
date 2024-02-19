@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Action, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs';
 import { IUser } from '../models/auth.model';
 import { UserService } from '../services/user.service';
@@ -39,5 +39,10 @@ export class UserState {
         });
       })
     );
+  }
+
+  @Selector([UserState])
+  static selectUsers(state: UserStateModel): IUser[] | undefined {
+    return state.users;
   }
 }
