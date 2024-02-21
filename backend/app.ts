@@ -32,6 +32,6 @@ app.use('/', router);
 
 app.listen(port, () => {
   console.log(
-    colors.rainbow(`Backend is running on port http://localhost:${port}`)
+    colors.rainbow(`Backend running on port http://localhost:${port}`)
   );
 });
