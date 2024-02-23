@@ -24,7 +24,6 @@ export interface UserStateModel {
     user: null,
   },
 })
-
 @Injectable()
 export class UserState {
   constructor(private userService: UserService) {}

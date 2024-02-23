@@ -14,9 +14,7 @@ app.use(cors());
 
 const MONGO_URL = 'mongodb://localhost:27017';
 mongoose
-  .connect(MONGO_URL, {
-    dbName: 'mailbox',
-  })
+  .connect(MONGO_URL, { dbName: 'mailbox' })
   .then(() => {
     console.log('Database Connected...');
   })

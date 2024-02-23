@@ -100,7 +100,7 @@ class AuthController {
         user.token = null;
         await user.save();
       }
-      
+
       return response
         .status(200)
         .json({ message: 'User logged out successfully' });
