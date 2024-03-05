@@ -19,8 +19,10 @@ export const registerSchema = z.object({
 
 export const messageSchema = z.object({
   to: z.string({ required_error: 'To is required' }),
-  
+
   sender: z.string({ required_error: 'Sender is required' }),
+
   subject: z.string({ required_error: 'Subject is required' }),
+  
   body: z.string({ required_error: 'Body is required' }),
 });
