@@ -27,7 +27,6 @@ class MessageController {
   public async createMessage(request: Request, response: Response) {
     try {
       const { sender, to, subject, body } = request.body;
-
       messageSchema.parse({ sender, to, subject, body });
 
       const message = new MessageModel({
