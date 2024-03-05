@@ -44,10 +44,7 @@ export const validateUser = async (
 };
 
 const isTokenValid = async (email: string, token: string) => {
-  const user = await UserModel.findOne({
-    email,
-    token,
-  });
+  const user = await UserModel.findOne({ email, token });
 
   return user ? true : false;
 };
