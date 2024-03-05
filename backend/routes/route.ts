@@ -5,7 +5,7 @@ import UserController from '../controllers/UserController';
 import { validateUser } from '../middleware/authenticate';
 
 const router = express.Router();
-
+// Auth Routes
 router.post('/auth/login', AuthController.login);
 router.post('/auth/register', AuthController.register);
 router.get('/auth/me', validateUser, AuthController.me);
