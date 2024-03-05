@@ -14,6 +14,7 @@ router.get('/auth/logout', validateUser, AuthController.logout);
 // User Routes
 router.get('/users', validateUser, UserController.getAllUsers);
 
+// Message Routes
 router.get('/message', validateUser, MessageController.getAllMessage);
 router.get('/message/:id', validateUser, MessageController.getMessage);
 router.get('/message/:id/read', validateUser, MessageController.readMessage);
