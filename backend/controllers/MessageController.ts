@@ -28,7 +28,6 @@ class MessageController {
     try {
       const { sender, to, subject, body } = request.body;
       messageSchema.parse({ sender, to, subject, body });
-
       const message = new MessageModel({
         sender,
         to,
