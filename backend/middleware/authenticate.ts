@@ -24,9 +24,7 @@ export const validateUser = async (
     const splittedToken = authorization.split(' ');
     try {
       const token = splittedToken[1];
-
       const user: IUser = (await verify(token, SECRETE_KEY)) as IUser;
-
       const isValidToken = await isTokenValid(user.email, token);
 
       if (user && isValidToken) {
