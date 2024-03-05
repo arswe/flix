@@ -11,6 +11,7 @@ router.post('/auth/register', AuthController.register);
 router.get('/auth/me', validateUser, AuthController.me);
 router.get('/auth/logout', validateUser, AuthController.logout);
 
+// User Routes
 router.get('/users', validateUser, UserController.getAllUsers);
 
 router.get('/message', validateUser, MessageController.getAllMessage);
